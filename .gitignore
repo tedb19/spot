@@ -1,0 +1,8 @@
+# Byte-compiled
+__pycache__/
+
+# sql-lite
+db.sqlite3
+
+# STATIC_ROOT folder
+served/
