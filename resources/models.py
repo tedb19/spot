@@ -35,25 +35,24 @@ class Resource(TimeStampedModel):
         db_table = 'resource'
 
 
-class Hardware(Resource):
+class ResourceProperty(TimeStampedModel):
 
-    ''' The hardware resources assigned to the project '''
+    ''' The property assigned to the resource '''
+    name = models.CharField(db_column='name', max_length=100)
+    description = models.TextField(db_column='description', blank=True, default='')
+    data_type = models.CharField(db_column='data_type', max_length=100)
 
-    serial_number = models.CharField(db_column='serial_number', max_length=100)
-    current_location = models.CharField(db_column='current_location', max_length=100)
-
-
-class System(Resource):
-
-    ''' The sub-system resources that form part of the project '''
-
-    user_name = models.CharField(db_column='user_name', max_length=100)
-    password = models.CharField(db_column='password', max_length=100)
-    url = models.CharField(db_column='url', max_length=500)
+    class Meta:
+        db_table = 'resource_property'
 
 
-class Documentation(Resource):
+class ResourcePropertyValue(TimeStampedModel):
 
-    ''' The documentation resources that describe the scope of the project '''
+    ''' The value to the property assigned to a resource '''
 
-    url = models.CharField(db_column='url', max_length=500)
+    resource = models.ForeignKey(Resource, db_column='resource_id')
+    resource_property = models.ForeignKey(ResourceProperty, db_column='resource_property_id')
+    value = models.TextField(db_column='value')
+
+    class Meta:
+        db_table = 'resource_property_value'

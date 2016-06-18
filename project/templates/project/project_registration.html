@@ -1,0 +1,65 @@
+{% extends 'user_account/base.html'%}
+
+{% block title %} {{page_title}} | {{block.super}} {% endblock title %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <div class="col-lg-12 col-md-12">
+
+        <div class="well">
+            <strong>Single Point Of Truth</strong>
+        </div>
+    	<div class="panel panel-primary">
+    		<div class="panel-heading">
+    			<i class="fa fa-newspaper-o" aria-hidden="true"></i> {{page_title}}
+            </div>
+
+    		<div class="panel-body">
+    			<div class="row">
+    				<div class="col-lg-12">
+                        <form role="form form-horizontal" method = "POST" action = '.'>
+                            {% csrf_token %}
+
+                            <div class="col-lg-6">
+                                <label class="control-label"><em>Name:*</em></label>
+                                {% if form.name.errors %}
+                                <div class="form-group has-error">
+                                    {{ form.name }}
+                                    <span class="error">{{form.name.errors}}</span>
+                                </div>
+                                {% else %}
+                                <div class="form-group">
+                                    {{ form.name }}
+                                </div>
+                                {% endif %}
+
+                                <label class="control-label"><em>Description:*</em></label>
+                                {% if form.description.errors %}
+                                <div class="form-group has-error">
+                                    {{ form.description }}
+                                    <span class="error">{{form.description.errors}}</span>
+                                </div>
+                                {% else %}
+                                <div class="form-group">
+                                    {{ form.description }}
+                                </div>
+                                {% endif %}
+
+                                <input class="btn btn-primary" type="submit" value="Save" />
+                                <input name="cancel" class="btn" type="submit" value="Cancel"/>
+                            </form>
+                        </div>
+    				</div>
+    			</div>
+    		</div>
+    		<div class="panel-footer">
+                Fields With * Are Required, Therefore Must Be Filled
+    		</div>
+    	</div>
+
+    </div>
+{% else %}
+    {% include 'project/not_registered.html' %}
+{% endif %}
+{% endblock content %}

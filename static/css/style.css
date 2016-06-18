@@ -26,3 +26,7 @@
 .well{
     margin-top: 20px;
 }
+.sitename{
+    color: green !important;
+    font-weight: bold  !important;
+}
