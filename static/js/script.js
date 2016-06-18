@@ -1,8 +1,14 @@
-function autoCloseAlert(selector){
-    $(selector).fadeTo(2000, 500).slideUp(2000, function(){
-        $(selector).alert('close');
+(function(){
+    function autoCloseAlert(selector){
+        $(selector).fadeTo(2000, 500).slideUp(2000, function(){
+            $(selector).alert('close');
+        });
+    }
+
+
+    autoCloseAlert(".alert");
+
+    $(function() {
+        $( document ).tooltip();
     });
-}
-
-
-autoCloseAlert(".alert");
+}());

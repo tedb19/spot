@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.conf import settings
 
 from .forms import RegistrationForm, LoginForm
 
@@ -100,5 +99,4 @@ def success(request, pk):
     user = User.objects.get(pk=pk)
     template_name = 'user_account/success.html'
     page_title = 'Successful Registration'
-    user.is_authenticated = False
     return render(request, template_name, locals())

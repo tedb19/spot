@@ -27,11 +27,12 @@
         <div class = "navbar navbar-inverse navbar-static-top">
             <div class = "container">
                 <div class = "navbar-header">
-                    <a class = "navbar-brand sitename" href = "{% url 'home' %}"><i class="fa fa-university"></i> Single Point Of Truth</a>
+                    <a class = "navbar-brand sitename" href = "{% url 'home' %}"> Single Point Of Truth</a>
                 </div>
 
                 <ul class = "nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
+                        <li><a href = "{% url 'projects_listing' %}"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Projects</a></li>
                         <li><a href = "{% url 'user_logout' %}"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
                     {% else %}
                         <li><a href = "{% url 'user_login' %}"><i class="fa fa-sign-in fa-fw"></i> Login</a></li>
@@ -70,7 +71,7 @@
         </div>
 
         {% block javascript %}
-          <script src = "{% static 'js/jquery-3.0.0.min.js' %}"></script>
+          <script src = "{% static 'js/jquery.min.js' %}"></script>
           <script src = "{% static 'js/bootstrap.min.js' %}"></script>
           <script src = "{% static 'js/script.js' %}"></script>
         {% endblock javascript%}
