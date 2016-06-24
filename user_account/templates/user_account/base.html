@@ -1,7 +1,6 @@
 {% load staticfiles %}
 
 
-<!DOCTYPE html>
 <html lang="en">
     <head>
       <meta charset = "utf-8">
@@ -33,6 +32,7 @@
                 <ul class = "nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
                         <li><a href = "{% url 'projects_listing' %}"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Projects</a></li>
+                        <li><a href = "#"><i class="fa fa-archive" aria-hidden="true"></i> Resources</a></li>
                         <li><a href = "{% url 'user_logout' %}"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
                     {% else %}
                         <li><a href = "{% url 'user_login' %}"><i class="fa fa-sign-in fa-fw"></i> Login</a></li>
@@ -72,6 +72,7 @@
 
         {% block javascript %}
           <script src = "{% static 'js/jquery.min.js' %}"></script>
+          <script src = "{% static 'js/jquery.formset.min.js' %}"></script>
           <script src = "{% static 'js/bootstrap.min.js' %}"></script>
           <script src = "{% static 'js/script.js' %}"></script>
         {% endblock javascript%}

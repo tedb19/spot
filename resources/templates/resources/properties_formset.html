@@ -1,0 +1,47 @@
+<strong> Resource Properties:* </strong>
+<br /><br />
+{{ formset.management_form }}
+{{ formset.non_form_errors.as_ul }}
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-condensed table-hover form" id="formset">
+        {% for resource_property_form in formset.forms %}
+          {% if forloop.first %}
+          <thead class="table_head" style="background-color:#A9E2F3;">
+              <tr>
+                  <th>Name</th>
+                  <th>Value</th>
+              </tr>
+          </thead>
+          {% endif %}
+          <tbody>
+
+              <tr class="{% cycle row1,row2 %}">
+                {% if resource_property_form.name.errors  %}
+                  <td>
+                      <div class="form-group has-error" title = "{{ form.name.errors.as_text }}">
+                          {{ resource_property_form.name }}
+                      </div>
+                  </td>
+                {% else %}
+                  <td>
+                      <div class="form-group">{{ resource_property_form.name }}</div>
+                  </td>
+                {% endif %}
+
+                {% if resource_property_form.value.errors  %}
+                  <td>
+                      <div class="form-group has-error" title = "{{ form.value.errors.as_text }}">
+                          {{ resource_property_form.value }}
+                      </div>
+                  </td>
+                {% else %}
+                  <td>
+                      <div class="form-group">{{ resource_property_form.value }}</div>
+                  </td>
+                {% endif %}
+              </tr>
+
+          </tbody>
+          {% endfor %}
+    </table>
+</div>
