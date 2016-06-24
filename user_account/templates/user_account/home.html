@@ -6,9 +6,19 @@
 <div class="col-lg-12 col-md-12">
     <div class="well">
         <strong>{{page_title}}</strong>
+        <div>
+            <p>This is a simple app meant to help you keep track of the resources assigned to a project.</p>
+            <p>The resources may include the following:
+            <br /> - Server resources
+            <br /> - Documentations
+            <br /> - Hardware resources
+            <br /> - Human resource etc.
+
+            </p>
+        </div>
         {% if user.is_authenticated %}
             <div>
-                Coming soon
+                Create a project <a href = "{% url 'projects_listing' %}"> here</a> to begin monitoring its resources
             </div>
         {% else %}
             <p>Please <a href = "{% url 'registration' %}">sign up</a> for an account.

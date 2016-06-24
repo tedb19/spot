@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.http import JsonResponse
 
 from user_account.views import LoginRequest
+from resources.models import Resource
 from .models import Project
 from .forms import ProjectForm
 
@@ -15,6 +16,28 @@ def projects_listing(request):
     page_title = 'Projects'
     template_name = 'project/projects_listing.html'
     projects = Project.objects.all()
+    project_ = {}
+    # "name": "", "pk": "", "description": ""
+    projects_ = []
+    for project in projects:
+        project_["name"] = project.name
+        project_["pk"] = project.pk
+        project_["description"] = project.description
+        project_["length"] = len(project.description.split(" "))
+        projects_.append(project_)
+    return render(request, template_name, locals())
+
+
+def project_profile(request, project_id):
+    if not request.user.is_authenticated:
+        return redirect(LoginRequest)
+    template_name = 'project/project_profile.html'
+    project = get_object_or_404(Project, pk=project_id)
+    try:
+        resources = Resource.objects.filter(project=project)
+    except Resource.DoesNotExist:
+        resources = None
+    page_title = project.name
     return render(request, template_name, locals())
 
 
@@ -26,7 +49,7 @@ def project_registration(request):
     if request.method == 'POST':
         form = ProjectForm(request.POST)
         if request.POST.get('cancel', None):
-            return redirect(home)
+            return redirect(projects_listing)
         if form.is_valid():
             name = form.cleaned_data['name']
             description = form.cleaned_data['description']

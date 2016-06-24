@@ -30,3 +30,66 @@
     color: green !important;
     font-weight: bold  !important;
 }
+.blue{
+    color: blue;
+    font-style: italic;
+    font-weight: bold;
+}
+.error{
+    margin-left: 90px;
+    margin-right: 20px;
+    padding-left: 10px;
+}
+.fa-times{
+    color: #8A0808;
+    font-weight: bold;
+    margin: 3px;
+    padding: 3px;
+}
+.fa-plus-square{
+    margin: 3px;
+    padding: 3px;
+}
+.add-project{
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+.projects{
+    padding-top: 20px;
+}
+.resource{
+    padding: 30px !important;
+}
+.resources_heading{
+    padding: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    color: green !important;
+}
+.fa-check{
+    color: green;
+}
+
+.list-group-item:nth-child(odd) { background: #ecf0f1 !important;}
+.list-group-item:nth-child(even) { background: white !important;}
+.list-group-item { background: white !important; }
+.page_title{
+    padding: 22px;
+    font-weight: bold;
+    font-size: 22px;
+}
+.resource_properties{
+    padding: 15px;
+}
+#myModalLabel{
+    color: green;
+}
+.modal-header{
+    background-color: #ecf0f1;
+}
+.fa-arrows-h{
+    color: black;
+    padding-left: 3px;
+    font-size: 10;
+    padding-right: 3px;
+}
